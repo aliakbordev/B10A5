@@ -15,3 +15,11 @@ function showSectionById(sectionId, buttonId) {
   document.getElementById(buttonId).classList.add("bg-[#B4F461]");
   document.getElementById(buttonId).classList.remove("bg-[#F9F761]");
 }
+
+
+// blog buttons
+  document.getElementById("blog").addEventListener("click", function () {
+   window.location.href = "../blog.html";
+  });
+
+  

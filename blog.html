@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1a833abfc4.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body class="overflow-y-scroll">
+    <header class="sticky top-0">
+        <!-- nav bar section -->
+        <section class="bg-[#F9F7F3] px-2.5 py-4 opacity-95">
+            <nav class="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                <button id="home" class="bg-[#B4F461] py-2 px-6 rounded-lg">Home</button>
+                <div class="flex items-center gap-2">
+                    <img class="w-8" src="./assets/logo.png" alt="">
+                    <p class="text-xl font-semibold">Donate Bangladesh</p>
+                </div>
+                <!-- balance -->
+                <div class="flex items-center gap-2">
+                    <img src="./assets/coin.png" alt="">
+                    <p class="text-xl font-semibold text-gray-700">
+                        <span id="total_balance">5500</span> BDT
+                    </p>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+
+    <main class="max-w-screen-xl mx-auto px-2.5">
+        <!-- Blog Section -->
+        <section class="bg-white p-8 rounded-lg shadow-lg space-y-4">
+        
+            <!-- Question 1 -->
+            <div class="question cursor-pointer p-4 border border-gray-200 rounded-lg flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">What is the Document Object Model (DOM)?</h2>
+                <i class="fas fa-chevron-down text-gray-600"></i>
+            </div>
+            <div class="answer hidden text-gray-600 mt-2 p-4">
+                The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a
+                webpage as a tree of objects. Using JavaScript, developers can interact with and modify the content, structure,
+                and style of the document dynamically.
+            </div>
+        
+            <!-- Question 2 -->
+            <div class="question cursor-pointer p-4 border border-gray-200 rounded-lg flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">How do you select an element from the DOM?</h2>
+                <i class="fas fa-chevron-down text-gray-600"></i>
+            </div>
+            <div class="answer hidden text-gray-600 mt-2 p-4">
+                You can select elements from the DOM using various methods such as <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">document.getElementById()</code>, <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">document.querySelector()</code>, and <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">document.querySelectorAll()</code>. These methods allow
+                you to access and manipulate specific elements based on their ID, class, or tag.
+            </div>
+        
+            <!-- Question 3 -->
+            <div class="question cursor-pointer p-4 border border-gray-200 rounded-lg flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">What is event delegation in the context of the DOM, and why is
+                    it useful?</h2>
+                <i class="fas fa-chevron-down text-gray-600"></i>
+            </div>
+            <div class="answer hidden text-gray-600 mt-2 p-4">
+                Event delegation is a technique that allows a single event listener to be added to a parent element to manage
+                events on its child elements. It's useful because it reduces the number of event listeners in the document and
+                allows dynamic child elements to be handled without adding event listeners for each.
+            </div>
+        
+            <!-- Question 4 -->
+            <div class="question cursor-pointer p-4 border border-gray-200 rounded-lg flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">How do you manipulate an element's attributes and styles using
+                    the DOM?</h2>
+                <i class="fas fa-chevron-down text-gray-600"></i>
+            </div>
+            <div class="answer hidden text-gray-600 mt-2 p-4">
+                You can manipulate an element's attributes using <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">element.setAttribute()</code> and <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">element.getAttribute()</code>. To change an element's
+                styles, you can modify the inline styles with <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">element.style</code> or toggle classes using <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">element.classList.add()</code> and <code
+                    class="bg-gray-100 text-red-500 px-2 py-1 rounded">element.classList.remove()</code>.
+            </div>
+        
+        </section>
+    </main>
+
+
+    <footer class="bg-[#F9F7F3] py-4 mt-8">
+        <p class="text-xl font-semibold text-center px-2.5">All reserved by @Donate Bangladesh</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+                const questions = document.querySelectorAll('.question');
+                let activeAnswer = null;
+
+                questions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const answer = question.nextElementSibling;
+                        const icon = question.querySelector('i');
+
+                        
+                        if (answer === activeAnswer) {
+                            answer.classList.add('hidden');
+                            icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                            activeAnswer = null;
+                        } else {
+                            // Hide the previous answer and change icon to down arrow
+                            if (activeAnswer) {
+                                activeAnswer.classList.add('hidden');
+                                activeAnswer.previousElementSibling.querySelector('i').classList.replace('fa-chevron-up', 'fa-chevron-down');
+                            }
+
+                            // Show the clicked answer and update the arrow
+                            answer.classList.remove('hidden');
+                            icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+
+                            // Set the current answer as active
+                            activeAnswer = answer;
+                        }
+                    });
+                });
+            });
+
+
+        // home button
+        document.getElementById("home").addEventListener("click", function () {
+                window.location.href = "../index.html";
+            });
+    </script>
+</body>
+</html>
