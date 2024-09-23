@@ -1,12 +1,16 @@
-
-
-
-
 // show section by Id
-function showSectionById(id){
-    // show section
-    document.getElementById("history_section").classList.add("hidden");
-    document.getElementById("donate_section").classList.add("hidden");
-    // hide section
-    document.getElementById(id).classList.remove("hidden");
+function showSectionById(sectionId, buttonId) {
+  // show section
+  document.getElementById("history_section").classList.add("hidden");
+  document.getElementById("donate_section").classList.add("hidden");
+  // hide section
+  document.getElementById(sectionId).classList.remove("hidden");
+
+  document.getElementById("donate_btn").classList.remove("bg-[#B4F461]");
+  document.getElementById("donate_btn").classList.add("bg-[#F9F761]");
+  document.getElementById("history_btn").classList.remove("bg-[#B4F461]");
+  document.getElementById("history_btn").classList.add("bg-[#F9F761]");
+
+  document.getElementById(buttonId).classList.add("bg-[#B4F461]");
+  document.getElementById(buttonId).classList.remove("bg-[#F9F761]");
 }
