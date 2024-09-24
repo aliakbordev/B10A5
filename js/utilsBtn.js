@@ -17,9 +17,4 @@ function showSectionById(sectionId, buttonId) {
 }
 
 
-// blog buttons
-  document.getElementById("blog").addEventListener("click", function () {
-   window.location.href = window.location.origin + "/blog.html";
-  });
-
   
