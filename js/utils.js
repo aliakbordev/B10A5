@@ -1,27 +1,41 @@
 
-document.getElementById("noakhali-btn").addEventListener("click",function(e){
+function popupModal (){
+    document.getElementById("success-modal").classList.remove("hidden");
+    const modal = document.getElementById("success-modal");
+    const closeModalButton = document.getElementById("close-modal");
+
+    // Close modal when close button is clicked
+    closeModalButton.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    // Close modal when clicking outside of modal content
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+      }
+    });
+}
+
+// Function to handle donation
+function handleDonation(section) {
   const mainBalanceField = document.getElementById("total_balance");
   let mainBalance = parseFloat(mainBalanceField.innerText);
 
-  const balanceField = document.getElementById("balance-noakhali");
+  const balanceField = section.querySelector("span");
+  const amountField = section.querySelector('input[type="number"]');
+
+  const heading = section.querySelector("h1").innerText;
+
   let balance = parseFloat(balanceField.innerText);
+  let amount = parseFloat(amountField.value);
 
-  const heading = document.getElementById("title-noakhali").innerText;
-
-  const amountField = document.getElementById("amount-noakhali");
-  const amount = parseFloat(amountField.value);
-
-  console.log(amount);
-
-    if (isNaN(amount) || amount <= 0) {
-      alert("Please enter a valid amount.");
-      return;
-    }
-
-    alert("done");
+  if (!isNaN(amount) && amount > 0) {
     mainBalanceField.innerText = mainBalance - amount;
     balanceField.innerText = balance + amount;
     amountField.value = "";
+
+    popupModal();
 
     const history = document.createElement("div");
 
@@ -32,20 +46,17 @@ document.getElementById("noakhali-btn").addEventListener("click",function(e){
     </div>
 `;
     document.getElementById("history_section").appendChild(history);
-  
-})
+  } else {
+    alert("Please enter a valid amount.");
+    return;
+  }
+}
 
-
-
-
-
-
-    
-
-    //  
-
-    //  
-
-   
-
-
+// Add event listeners to each donate button
+document.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", function () {
+    const section = this.closest(".border"); // Get the section
+    // const section = this.parentElement;
+    handleDonation(section);
+  });
+});

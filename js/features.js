@@ -10,6 +10,10 @@ document.getElementById("history_btn").addEventListener("click", function () {
 
 
 
+handleDonation("donations");
+
+
+
 // Donate and History features
 // document.getElementById("noakhali-btn").addEventListener("click", function (event) {
 //     event.preventDefault();
