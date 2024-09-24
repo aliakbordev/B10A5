@@ -19,7 +19,7 @@ function showSectionById(sectionId, buttonId) {
 
 // blog buttons
   document.getElementById("blog").addEventListener("click", function () {
-   window.location.href = "../blog.html";
+   window.location.href = "./blog.html";
   });
 
   

@@ -11,7 +11,7 @@ function handleDonation(section) {
   let balance = parseFloat(balanceField.innerText);
   let amount = parseFloat(amountField.value);
 
-  if (!isNaN(amount) && amount > 0) {
+  if (!isNaN(amount) && amount > 0 && amount <= mainBalance) {
     mainBalanceField.innerText = mainBalance - amount;
     balanceField.innerText = balance + amount;
     amountField.value = "";
