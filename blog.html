@@ -94,48 +94,12 @@
     <footer class="bg-[#F9F7F3] py-4 mt-8">
         <p class="text-xl font-semibold text-center px-2.5">All reserved by @Donate Bangladesh</p>
     </footer>
+    <script src="./js/blogUtils.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-                const questions = document.querySelectorAll('.question');
-                let activeAnswer = null;
-
-                questions.forEach(question => {
-                    question.addEventListener('click', () => {
-                        const answer = question.nextElementSibling;
-                        const icon = question.querySelector('i');
-
-                        
-                        if (answer === activeAnswer) {
-                            answer.classList.add('hidden');
-                            icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-                            activeAnswer = null;
-                        } else {
-                            // Hide the previous answer and change icon to down arrow
-                            if (activeAnswer) {
-                                activeAnswer.classList.add('hidden');
-                                activeAnswer.previousElementSibling.querySelector('i').classList.replace('fa-chevron-up', 'fa-chevron-down');
-                            }
-
-                            // Show the clicked answer and update the arrow
-                            answer.classList.remove('hidden');
-                            icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-
-                            // Set the current answer as active
-                            activeAnswer = answer;
-                        }
-                    });
-                });
-            });
-
-
         // home button
         document.getElementById("home").addEventListener("click", function () {
                 window.location.href = "../index.html";
             });
-
-
-            
-
     </script>
 </body>
 </html>
